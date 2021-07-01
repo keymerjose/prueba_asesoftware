@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Consulta y asignación automatica de turnos.</h1>
+        </div>
+        <div class="col-12">
+            <form action="" method="post" id="formAsignarTurnos">
+                <div class="form-row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group">
+                        <label for="fecha_inicio">Fecha Inicio</label>
+                        <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control" [(ngModel)]="datos.fecha_inicio" placeholder="AAAA-MM-DD">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group">
+                        <label for="fecha_final">Fecha Final</label>
+                        <input type="text" name="fecha_final" id="fecha_final" class="form-control" [(ngModel)]="datos.fecha_final" placeholder="AAAA-MM-DD">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group">
+                        <label for="servicio">Servicio</label>
+                        <select name="servicio" id="servicio" class="form-control" [(ngModel)]="datos.servicio">
+                            <option value="{{ item.id }}" *ngFor="let item of servicios[0]">
+                                {{ item.nom_servicio }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group">
+                        <a class="btn btn-primary m-4" (click)="buscar()">Buscar</a>
+                        <a class="btn btn-primary m-4" (click)="agendar()">Agendar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora Inicio</th>
+                            <th>Hora Final</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let turno of turnos[0]">
+                            <td>
+                                {{ turno.fecha_turno }}
+                            </td>
+                            <td>
+                                {{ turno.hora_inicio }}
+                            </td>
+                            <td>
+                                {{ turno.hora_fin }}
+                            </td>
+                            <td>
+                                {{ turno.estado }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
